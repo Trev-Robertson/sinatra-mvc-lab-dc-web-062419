@@ -3,11 +3,10 @@ class PigLatinizer
     attr_reader :string
 
     def initialize(string)
-        @string = string.downcase
+        @string = string
     end
 
       def latinize
-        string = string.downcase
         split_string = string.split(" ")
 
        split_string_more = split_string.map do |word|
