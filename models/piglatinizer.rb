@@ -1,9 +1,9 @@
 class PigLatinizer
     
-    attr_reader :string
+    attr_accessor :string
 
     def initialize(string)
-        @string = string
+        @string = string.downcase
     end
 
       def latinize
@@ -11,11 +11,17 @@ class PigLatinizer
 
        split_string_more = split_string.map do |word|
                     new_elem = word.split("")
-            first_letter = new_elem.shift
-            if first_letter =~ /[aeiou]/
-                new_elem << [first_letter, "w", "a", "y"]
+            if new_elem.first =~ /[aeiou]/
+                new_elem << ["w", "a", "y"]
             else
-                new_elem << [first_letter, "a", "y"]
+                # binding.pry
+                while (new_elem.first =~ /[aeiou]/) == nil do
+               first_letter = new_elem.shift
+            #    binding.pry
+               new_elem << first_letter
+            #    binding.pry
+                end
+                new_elem << ["a", "y"]
             end
             
        end
