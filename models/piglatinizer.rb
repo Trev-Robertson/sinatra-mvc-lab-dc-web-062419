@@ -2,16 +2,17 @@ class PigLatinizer
     
     attr_accessor :string
 
-    def initialize(string)
-        @string = string.downcase
-    end
+        def initialize(sting)
+            @string = string
+        end
 
-      def latinize
+
+      def latinize(string)
         split_string = string.split(" ")
 
        split_string_more = split_string.map do |word|
                     new_elem = word.split("")
-            if new_elem.first =~ /[aeiou]/
+            if (new_elem.first =~ /[aeiou]/) != nil
                 new_elem << ["w", "a", "y"]
             else
                 # binding.pry
